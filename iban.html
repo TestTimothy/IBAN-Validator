@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>IBAN validator</title>
+<style>
+form,
+div {
+padding: 0.5em 0 0 0;
+}
+div span {
+padding: 0 0.5em;
+}
+#iban_elements .iban {
+background-color: aqua;
+}
+#iban_elements .country {
+background-color: greenyellow;
+}
+#iban_elements .element {
+background-color: yellowgreen;
+}
+</style>
+</head>
+<body>
+<form>
+<label>IBAN: <input type='text' name='IBAN' id='iban_input' style='text-transform:uppercase'></label>
+</form>
+<div id='iban_valid'></div>
+<div id='iban_elements'></div>
+<!-- script src='https://cdn.jsdelivr.net/npm/big.js@6.2.1/big.min.js'></script -->
+<script src='iban.js'></script>
+<script src='display.js'></script>
+</body>
+</html>
+
