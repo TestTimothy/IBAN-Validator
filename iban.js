@@ -2331,14 +2331,13 @@ function validateIban(iban) {
 	var pass = rules.elements.every(function(elm) {
 		var stop = elm.init + elm.length;
 		var text = iban.substring(elm.init, stop);
-		if (elm.name) {
-			var ibanElement = {
-				'label':elm.name,
-				'value':text,
-				'type':'element',
-			};
-			ibanElements.push(ibanElement);
-		}
+		var ibanElement = {
+			'label':elm.name ?? 'Unnamed element',
+			'value':text,
+			'type':'element',
+		};
+		ibanElements.push(ibanElement);
+
 		switch (elm.type) {
 			case 'n':
 				// number
