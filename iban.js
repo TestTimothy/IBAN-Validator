@@ -2417,8 +2417,45 @@ function validateIban(iban) {
 	}
 
 	// Begin constructing the returned elements.
-	const parts = iban.match(/.{1,4}/g);
-	var print = parts.join(' ');
+	// First, the human-readable form of the IBAN with spaces.
+	switch (country) {
+	case 'BI':
+		var parts = [
+			iban.substr(0, 4),
+			iban.substr(4, 5),
+			iban.substr(9, 5),
+			iban.substr(14, 11),
+			iban.substr(25, 2),
+		];
+		var print = parts.join(' ');
+		break;
+	case 'EG':
+		var print = iban;
+		break;
+	case 'LY':
+		var parts = [
+			iban.substr(0, 4),
+			iban.substr(4, 3),
+			iban.substr(7, 3),
+			iban.substr(10, 15),
+		];
+		var print = parts.join(' ');
+		break;
+	case 'SV':
+		var parts = [
+			iban.substr(0, 2),
+			iban.substr(2, 2),
+			iban.substr(4, 4),
+			iban.substr(8, 20),
+		];
+		var print = parts.join(' ');
+		break;
+	default:
+		var parts = iban.match(/.{1,4}/g); // simply split every four characters
+		var print = parts.join(' ');
+		break;
+	}
+
 	var ibanElements = [
 		{
 			'label':'Machine-readable IBAN',
