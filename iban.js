@@ -464,11 +464,12 @@ function validateIban(iban) {
 					'init':8,
 					'length':20,
 					'name':'Account number',
+					'type':'n',
 				},
 			],
 		},
 		'TL':{
-			'name':'East Timor',
+			'name':'Timor-Leste (East Timor)',
 			'length':23,
 			'official':true,
 			'check':38,
@@ -541,7 +542,7 @@ function validateIban(iban) {
 		},
 		'EE':{
 			'name':'Estonia',
-			'length':28,
+			'length':20,
 			'official':true,
 			'check':true,
 			'elements':[
@@ -569,6 +570,52 @@ function validateIban(iban) {
 					'name':'National check digit',
 					'type':'n',
 				},
+			],
+		},
+		'YE':{
+			'name':'Yemen',
+			'length':30,
+			'official':true,
+			'check':true,
+			'elements':[
+				{
+					'init':4,
+					'length':4,
+					'name':'Bank code',
+					'type':'a',
+				},
+				{
+					'init':8,
+					'length':4,
+					'name':'Branch code',
+					'type':'n',
+				},
+				{
+					'init':12,
+					'length':18,
+					'name':'Account number',
+					'type':'c',
+				}
+			],
+		},
+		'FK':{
+			'name':'Falkland Islands',
+			'length':18,
+			'official':true,
+			'check':true,
+			'elements':[
+				{
+					'init':4,
+					'length':2,
+					'name':'National bank code',
+					'type':'a',
+				},
+				{
+					'init':6,
+					'length':12,
+					'name':'Account number',
+					'type':'n',
+				}
 			],
 		},
 		'FO':{
@@ -607,7 +654,7 @@ function validateIban(iban) {
 			'length':27,
 			'official':true,
 			'check':true,
-			'elememts':[
+			'elements':[
 				{
 					'init':4,
 					'length':5,
@@ -1134,6 +1181,26 @@ function validateIban(iban) {
 				},
 			],
 		},
+		'MN':{
+			'name':'Mongolia',
+			'length':20,
+			'official':true,
+			'check':true,
+			'elements':[
+				{
+					'init':4,
+					'length':4,
+					'name':'National bank code',
+					'type':'n',
+				},
+				{
+					'init':8,
+					'length':12,
+					'name':'Account number',
+					'type':'n',
+				},
+			],
+		},
 		'MT':{
 			'name':'Malta',
 			'length':31,
@@ -1385,7 +1452,7 @@ function validateIban(iban) {
 			],
 		},
 		'PS':{
-			'name':'Palestinian territories',
+			'name':'Palestine',
 			'length':29,
 			'official':true,
 			'check':true,
@@ -1432,6 +1499,7 @@ function validateIban(iban) {
 					'init':12,
 					'length':16,
 					'name':'Account number',
+					'type':'n',
 				},
 			],
 		},
@@ -1657,7 +1725,7 @@ function validateIban(iban) {
 				{
 					'init':28,
 					'length':3,
-					'name':'Currncy code',
+					'name':'Currency code',
 					'type':'a',
 				},
 			],
@@ -1737,6 +1805,32 @@ function validateIban(iban) {
 				},
 			],
 		},
+		'SO':{
+			'name':'Somalia',
+			'length':23,
+			'official':true,
+			'check':true,
+			'elements':[
+				{
+					'init':4,
+					'length':4,
+					'name':'National bank code',
+					'type':'n',
+				},
+				{
+					'init':8,
+					'length':3,
+					'name':'Branch code',
+					'type':'n',
+				},
+				{
+					'init':11,
+					'length':12,
+					'name':'Account number',
+					'type':'n',
+				},
+			],
+		},
 		'ES':{
 			'name':'Spain',
 			'length':24,
@@ -1769,6 +1863,26 @@ function validateIban(iban) {
 				},
 			],
 		},
+		'OM':{
+			'name':'Oman',
+			'length':23,
+			'official':true,
+			'check':true,
+			'elements':[
+				{
+					'init':4,
+					'length':3,
+					'name':'National bank code',
+					'type':'n',
+				},
+				{
+					'init':7,
+					'length':16,
+					'name':'Account number',
+					'type':'c',
+				},
+			],
+		},
 		'SD':{
 			'name':'Sudan',
 			'length':18,
@@ -1792,7 +1906,7 @@ function validateIban(iban) {
 		'SE':{
 			'name':'Sweden',
 			'length':24,
-			'offical':true,
+			'official':true,
 			'check':true,
 			'elements':[
 				{
@@ -1868,7 +1982,7 @@ function validateIban(iban) {
 			],
 		},
 		'TR':{
-			'name':'Türkiye',
+			'name':'Türkiye (Turkey)',
 			'length':26,
 			'official':true,
 			'check':true,
@@ -2055,13 +2169,25 @@ function validateIban(iban) {
 		'BI':{
 			'name':'Burundi',
 			'length':27,
-			'official':false,
+			'official':true,
 			'check':true,
 			'elements':[
 				{
 					'init':4,
-					'length':23,
-					'name':null,
+					'length':5,
+					'name':'National bank code',
+					'type':'n',
+				},
+				{
+					'init':9,
+					'length':5,
+					'name':'Branch identifier',
+					'type':'n',
+				},
+				{
+					'init':13,
+					'length':13,
+					'name':'Account number',
 					'type':'n',
 				},
 			],
@@ -2104,13 +2230,13 @@ function validateIban(iban) {
 			'elements':[
 				{
 					'init':4,
-					'length':1,
+					'length':2,
 					'name':null,
 					'type':'a',
 				},
 				{
-					'init':5,
-					'length':23,
+					'init':6,
+					'length':22,
 					'name':null,
 					'type':'n',
 				}
@@ -2118,7 +2244,7 @@ function validateIban(iban) {
 		},
 		'DJ':{
 			'name':'Djibouti',
-			'official':false,
+			'official':true,
 			'copy':'BI',
 		},
 		'GQ':{
@@ -2207,20 +2333,20 @@ function validateIban(iban) {
 		},
 		'NI':{
 			'name':'Nicaragua',
-			'length':32,
-			'official':false,
+			'length':28,
+			'official':true,
 			'check':true,
 			'elements':[
 				{
 					'init':4,
 					'length':4,
-					'name':null,
+					'name':'National bank code',
 					'type':'a',
 				},
 				{
 					'init':8,
-					'length':24,
-					'name':null,
+					'length':20,
+					'name':'Account number',
 					'type':'n',
 				},
 			],
