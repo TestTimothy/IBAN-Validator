@@ -25,8 +25,10 @@
 /**
  * IMPORTANT NOTE:
  *
- * Information on BBAN structure is lifted directly from Wikipedia, as I cannot
- * be troubled to consult the actual ISO standards.
+ * Information on BBAN structure is lifted primarily from Wikipedia, as it names
+ * the parts of the BBAN, but I have also considered the IBAN Registry (Release 98,
+ * July 2024), published by SWIFT. And I've tested on examples from https://www.iban.com/structure
+ * too.
  *
  * https://en.wikipedia.org/wiki/International_Bank_Account_Number
  */
