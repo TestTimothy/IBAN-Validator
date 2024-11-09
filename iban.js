@@ -2333,8 +2333,10 @@ function validateIban(iban) {
 	var pass = rules.elements.every(function(elm) {
 		var stop = elm.init + elm.length;
 		var text = iban.substring(elm.init, stop);
+		// In cases where the BBAN structure is unknown, the entire BBAN is output
+		// as an unnamed element. In that case, output it with the appropriate label.
 		var ibanElement = {
-			'label':elm.name ?? 'Unnamed element',
+			'label':elm.name ?? (text === bban ? 'BBAN' : 'Unnamed element'),
 			'value':text,
 			'type':'element',
 		};
