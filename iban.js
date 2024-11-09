@@ -2575,6 +2575,6 @@ function validateIban(iban) {
 		}
 	}
 
-	return [true, country, rules.name, 'Valid IBAN', ibanElements];
+	return [true, country, rules.name, 'Valid ' + rules.name + ' IBAN', ibanElements];
 }
 
