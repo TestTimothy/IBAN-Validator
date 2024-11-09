@@ -27,8 +27,10 @@ var iban = document.getElementById('iban_input');
 iban.addEventListener('keyup', function() {
 	var val = this.value;
 	var note = document.getElementById('iban_valid');
+	var country = document.getElementById('iban_country');
 	var elementsDisplay = document.getElementById('iban_elements');
 	note.innerHTML = '';
+	country.innerHTML = '';
 	elementsDisplay.innerHTML = '';
 
 	if (val.length > 5) {
@@ -69,6 +71,7 @@ iban.addEventListener('keyup', function() {
 			}
 
 			note.innerHTML = message;
+			country.innerHTML = name;
 		}
 	}
 });
