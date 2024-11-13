@@ -28,6 +28,8 @@ function calculate_iban(el) {
 	var country = document.getElementById('iban_country');
 	var elementsDisplay = document.getElementById('iban_elements');
 	var display_style = document.querySelector('input[name=displaying]:checked').value;
+
+	el.className = 'neutral';
 	note.innerHTML = '';
 	country.innerHTML = '';
 	if (elementsDisplay) {
@@ -86,10 +88,6 @@ function calculate_iban(el) {
 					});
 					document.body.appendChild(elementsDisplay);
 				}
-			}
-
-			if (valid === null) {
-				el.className = 'neutral';
 			}
 
 			note.innerHTML = message;
