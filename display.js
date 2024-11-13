@@ -22,16 +22,17 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-var iban = document.getElementById('iban_input');
-
-iban.addEventListener('keyup', function() {
-	var val = this.value;
+function calculate_iban(el) {
+	var val = el.value;
 	var note = document.getElementById('iban_valid');
 	var country = document.getElementById('iban_country');
 	var elementsDisplay = document.getElementById('iban_elements');
+	var display_style = document.querySelector('input[name=displaying]:checked').value;
 	note.innerHTML = '';
 	country.innerHTML = '';
-	elementsDisplay.innerHTML = '';
+	if (elementsDisplay) {
+		elementsDisplay.remove();
+	}
 
 	if (val.length > 5) {
 		var iban = val.toUpperCase();
@@ -45,34 +46,66 @@ iban.addEventListener('keyup', function() {
 			var message = resp[3];
 
 			if (valid === false) {
-				this.style.backgroundColor = '#f99';
+				el.className = 'invalid';
 			}
 
 			if (valid === true) {
-				this.style.backgroundColor = '#0c0';
+				el.className = 'valid';
 				var elements = resp[4];
-				elements.forEach(function(elm) {
-					var s = document.createElement('span');
-					var l = document.createElement('span');
-					var v = document.createElement('span');
-					s.style.display = 'block';
-					s.className = elm.type;
-					l.style.fontWeight = 'bold';
-					l.innerHTML = elm.label + ':';
-					v.innerHTML = elm.value;
-					s.appendChild(l);
-					s.appendChild(v);
-					elementsDisplay.appendChild(s);
-				});
+
+				if (display_style === 'table') {
+					elementsDisplay = document.createElement('table');
+					elementsDisplay.id = 'iban_elements';
+					elements.forEach(function(elm) {
+						var s = document.createElement('tr');
+						var l = document.createElement('th');
+						var v = document.createElement('td');
+						s.className = elm.type;
+						l.innerHTML = elm.label;
+						v.innerHTML = elm.value;
+						s.appendChild(l);
+						s.appendChild(v);
+						elementsDisplay.appendChild(s);
+					});
+					document.body.appendChild(elementsDisplay);
+				} else {
+					elementsDisplay = document.createElement('div');
+					elementsDisplay.id = 'iban_elements';
+					elements.forEach(function(elm) {
+						var s = document.createElement('span');
+						var l = document.createElement('span');
+						var v = document.createElement('span');
+						s.style.display = 'block';
+						s.className = elm.type;
+						l.style.fontWeight = 'bold';
+						l.innerHTML = elm.label + ':';
+						v.innerHTML = elm.value;
+						s.appendChild(l);
+						s.appendChild(v);
+						elementsDisplay.appendChild(s);
+					});
+					document.body.appendChild(elementsDisplay);
+				}
 			}
 
 			if (valid === null) {
-				this.style.backgroundColor = '#fff';
+				el.className = 'neutral';
 			}
 
 			note.innerHTML = message;
 			country.innerHTML = name;
 		}
 	}
+}
+
+document.getElementById('iban_input').addEventListener('input', function() {
+	calculate_iban(this);
 });
 
+var displaying = document.qx.displaying;
+displaying.forEach (display_option => {
+	display_option.addEventListener('change', function() {
+		var iban = document.getElementById('iban_input');
+		calculate_iban(iban);
+	});
+});

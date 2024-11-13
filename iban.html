@@ -8,6 +8,16 @@ form,
 div {
 padding: 0.5em 0 0 0;
 }
+form input {
+background-color: #fff;
+text-transform: uppercase;
+}
+form input.valid {
+background-color: #0c0;
+}
+form input.invalid {
+background-color: #f99;
+}
 div span {
 padding: 0 0.5em;
 }
@@ -20,17 +30,23 @@ background-color: greenyellow;
 #iban_elements .element {
 background-color: yellowgreen;
 }
+table#iban_elements {
+border-collapse: collapse;
+}
+#iban_elements th {
+text-align: left;
+}
 </style>
 </head>
 <body>
 <h1>IBAN Validator</h1>
-<form>
-<label>IBAN: <input type='text' name='IBAN' id='iban_input' style='text-transform:uppercase'></label>
+<form name='qx'>
+<label>IBAN: <input type='text' name='IBAN' id='iban_input'></label>
+<label><input type='radio' name='displaying' value='span' checked>Span</label>
+<label><input type='radio' name='displaying' value='table'>Table</label>
 </form>
 <h2 id='iban_valid'>&nbsp;</h2>
 <h3 id='iban_country'>&nbsp;</h3>
-<div id='iban_elements'></div>
-<!-- script src='https://cdn.jsdelivr.net/npm/big.js@6.2.1/big.min.js'></script -->
 <script src='iban.js'></script>
 <script src='display.js'></script>
 </body>
